@@ -1,0 +1,332 @@
+@base <http://example.org/> .
+@prefix ex:   <http://example.org/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+
+#################################################################
+# HEADER
+#################################################################
+
+<http://example.org/party-games-ontology>
+    a owl:Ontology ;
+    dct:title "Party Games Ontology"@en ;
+    dct:creator "Owen BONSERGENT" ;
+    dct:creator "Adrien DUOLLE" ;
+    dct:description "An ontology describing categories, mechanics and relations between party games."@en ;
+    dct:license <http://creativecommons.org/licenses/by/4.0/> ;
+    dct:created "2026-02-28"^^xsd:date ;
+    vann:preferredNamespacePrefix "ex" ;
+    vann:preferredNamespaceUri "http://example.org/" .
+
+#################################################################
+# CONCEPT SCHEME
+#################################################################
+
+ex:PartyGamesScheme a skos:ConceptScheme ;
+    dct:title "Party Games Concept Scheme"@en ;
+    dct:creator "Owen BONSERGENT, Adrien DUOLLE" ;
+    skos:prefLabel "Party Games Concept Scheme"@en ;
+    skos:definition "The concept scheme organizing categories of party games."@en .
+
+    dct:description "Concept scheme for party game categories."@en .
+
+#################################################################
+# CLASSES
+#################################################################
+
+ex:PartyGame a owl:Class, skos:Concept ;
+    rdfs:label "Party game"@en ;
+    skos:prefLabel "Party game"@en ;
+    skos:definition "A game played in a social or festive context."@en ;
+    skos:narrower ex:CardGame, ex:BoardGame, ex:AmbianceGame, ex:AgilityGame, ex:ThinkingGame, ex:ManagementGame .
+
+# Main categories
+ex:CardGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:PartyGame ;
+    rdfs:label "Card game"@en ;
+    skos:prefLabel "Card game"@en ;
+    skos:definition "A party game that primarily uses cards as its main components."@en ;
+    skos:broader ex:PartyGame ;
+    skos:narrower ex:ClassicCardGame, ex:ModernCardGame, ex:DeckBuildingGame .
+
+ex:BoardGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:PartyGame ;
+    rdfs:label "Board game"@en ;
+    skos:prefLabel "Board game"@en ;
+    skos:definition "A party game played on a board with pieces, tiles, or pawns."@en ;
+    skos:broader ex:PartyGame ;
+    skos:narrower ex:PawnGame .
+
+ex:AmbianceGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:PartyGame ;
+    rdfs:label "Ambiance game"@en ;
+    skos:prefLabel "Ambiance game"@en ;
+    skos:definition "A party game focused on social interaction, atmosphere, and group dynamics."@en ;
+    skos:broader ex:PartyGame ;
+    skos:narrower ex:CommunicationGame, ex:BluffGame .
+
+ex:AgilityGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:PartyGame ;
+    rdfs:label "Agility game"@en ;
+    skos:prefLabel "Agility game"@en ;
+    skos:definition "A party game requiring physical speed, dexterity, or precision."@en ;
+    skos:broader ex:PartyGame ;
+    skos:narrower ex:ReflexesGame, ex:PrecisionGame .
+
+ex:ThinkingGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:PartyGame ;
+    rdfs:label "Thinking game"@en ;
+    skos:prefLabel "Thinking game"@en ;
+    skos:definition "A party game emphasizing logic, reasoning, or problem-solving."@en ;
+    skos:broader ex:PartyGame ;
+    skos:narrower ex:LogicGame .
+
+ex:ManagementGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:PartyGame ;
+    rdfs:label "Management game"@en ;
+    skos:prefLabel "Management game"@en ;
+    skos:definition "A party game involving resource allocation, planning, or strategic management."@en ;
+    skos:broader ex:PartyGame .
+
+# Card game subclasses
+ex:ClassicCardGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:CardGame ;
+    rdfs:label "Classic card game"@en ;
+    skos:prefLabel "Classic card game"@en ;
+    skos:definition "A traditional card game using standard playing cards."@en ;
+    skos:broader ex:CardGame .
+
+ex:ModernCardGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:CardGame ;
+    rdfs:label "Modern card game"@en ;
+    skos:prefLabel "Modern card game"@en ;
+    skos:definition "A contemporary card game with custom rules or components."@en ;
+    skos:broader ex:CardGame .
+
+ex:DeckBuildingGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:CardGame ;
+    rdfs:label "Deck building game"@en ;
+    skos:prefLabel "Deck building game"@en ;
+    skos:definition "A card game where players build their deck during gameplay."@en ;
+    skos:broader ex:CardGame ;
+    skos:narrower ex:CollectibleCardGame, ex:CollectionGame .
+
+ex:CollectibleCardGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:DeckBuildingGame ;
+    rdfs:label "Collectible card game"@en ;
+    skos:prefLabel "Collectible card game"@en ;
+    skos:definition "A deck-building game where players collect and trade cards to build decks."@en ;
+    skos:broader ex:DeckBuildingGame .
+
+ex:CollectionGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:DeckBuildingGame ;
+    rdfs:label "Collection game"@en ;
+    skos:prefLabel "Collection game"@en ;
+    skos:definition "A deck-building game focused on assembling sets or collections of cards."@en ;
+    skos:broader ex:DeckBuildingGame .
+
+# Board game subclass
+ex:PawnGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:BoardGame ;
+    rdfs:label "Pawn game"@en ;
+    skos:prefLabel "Pawn game"@en ;
+    skos:definition "A board game where gameplay revolves around moving pawns or pieces on a grid."@en ;
+    skos:broader ex:BoardGame .
+
+# Ambiance subclasses
+ex:CommunicationGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:AmbianceGame ;
+    rdfs:label "Communication game"@en ;
+    skos:prefLabel "Communication game"@en ;
+    skos:definition "An ambiance game centered on verbal or non-verbal communication."@en ;
+    skos:broader ex:AmbianceGame .
+
+ex:BluffGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:AmbianceGame ;
+    rdfs:label "Bluff game"@en ;
+    skos:prefLabel "Bluff game"@en ;
+    skos:definition "An ambiance game involving deception, hidden intentions, or bluffing."@en ;
+    skos:broader ex:AmbianceGame .
+
+# Agility subclasses
+ex:ReflexesGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:AgilityGame ;
+    rdfs:label "Reflexes game"@en ;
+    skos:prefLabel "Reflexes game"@en ;
+    skos:definition "An agility game requiring fast reactions or reflex-based actions."@en ;
+    skos:broader ex:AgilityGame .
+
+ex:PrecisionGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:AgilityGame ;
+    rdfs:label "Precision game"@en ;
+    skos:prefLabel "Precision game"@en ;
+    skos:definition "An agility game requiring careful, precise physical actions."@en ;
+    skos:broader ex:AgilityGame .
+
+# Thinking subclass
+ex:LogicGame a owl:Class, skos:Concept ; rdfs:subClassOf ex:ThinkingGame ;
+    rdfs:label "Logic game"@en ;
+    skos:prefLabel "Logic game"@en ;
+    skos:definition "A thinking game based on logical deduction or structured problem-solving."@en ;
+    skos:broader ex:ThinkingGame .
+
+#################################################################
+# LINK CONCEPTS TO SCHEME
+#################################################################
+
+ex:PartyGame skos:inScheme ex:PartyGamesScheme .
+ex:CardGame  skos:inScheme ex:PartyGamesScheme .
+ex:BoardGame  skos:inScheme ex:PartyGamesScheme .
+ex:AmbianceGame  skos:inScheme ex:PartyGamesScheme .
+ex:AgilityGame  skos:inScheme ex:PartyGamesScheme .
+ex:ThinkingGame  skos:inScheme ex:PartyGamesScheme .
+ex:ManagementGame  skos:inScheme ex:PartyGamesScheme .
+ex:ClassicCardGame  skos:inScheme ex:PartyGamesScheme .
+ex:ModernCardGame  skos:inScheme ex:PartyGamesScheme .
+ex:DeckBuildingGame  skos:inScheme ex:PartyGamesScheme .
+ex:CollectibleCardGame  skos:inScheme ex:PartyGamesScheme .
+ex:CollectionGame  skos:inScheme ex:PartyGamesScheme .
+ex:PawnGame  skos:inScheme ex:PartyGamesScheme .
+ex:CommunicationGame  skos:inScheme ex:PartyGamesScheme .
+ex:BluffGame  skos:inScheme ex:PartyGamesScheme .
+ex:ReflexesGame  skos:inScheme ex:PartyGamesScheme .
+ex:PrecisionGame  skos:inScheme ex:PartyGamesScheme .
+ex:LogicGame  skos:inScheme ex:PartyGamesScheme .
+
+#################################################################
+# PEOPLE & ORGANIZATIONS
+#################################################################
+
+ex:KlausTeuber a foaf:Person ;
+    foaf:name "Klaus Teuber" ;
+    foaf:made ex:Catan .
+
+ex:Asmodee a foaf:Organization ;
+    foaf:name "Asmodee" ;
+    foaf:homepage <https://www.asmodee.com/> .
+
+
+#################################################################
+# PROPERTIES
+#################################################################
+
+ex:relatedTo a owl:ObjectProperty ;
+    rdfs:domain ex:PartyGame ;
+    rdfs:range ex:PartyGame ;
+    rdfs:label "related to"@en ;
+    skos:prefLabel "related to"@en ;
+    skos:definition "A general relation indicating that two party games are connected in some way."@en ;
+    rdfs:comment "Indicates that a game is related to another one."@en .
+
+ex:inspiredBy a owl:ObjectProperty, owl:IrreflexiveProperty ;
+    rdfs:subPropertyOf ex:relatedTo ;
+    owl:inverseOf ex:inspires ;
+    rdfs:label "inspired by"@en ;
+    skos:prefLabel "inspired by"@en ;
+    skos:definition "A relation indicating that a game draws inspiration from another game."@en ;
+    rdfs:comment "Indicates that a game is inspired by another one."@en .
+
+ex:inspires a owl:ObjectProperty, owl:IrreflexiveProperty ;
+    rdfs:subPropertyOf ex:relatedTo ;
+    owl:inverseOf ex:inspiredBy ;
+    rdfs:label "inspires"@en ;
+    skos:prefLabel "inspires"@en ;
+    skos:definition "A relation indicating that a game serves as inspiration for another game."@en ;
+    rdfs:comment "Indicates that a game inspires another one."@en .
+
+ex:similarTo a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:subPropertyOf ex:relatedTo ;
+    rdfs:label "is similar to"@en ;
+    skos:prefLabel "is similar to"@en ;
+    skos:definition "A symmetric relation indicating that two games share notable similarities."@en ;
+    rdfs:comment "Indicates that a game presents similarities to another one."@en .
+
+ex:similarMechanics a owl:ObjectProperty ;
+    rdfs:subPropertyOf ex:relatedTo ;
+    rdfs:label "has similar mechanics"@en ;
+    skos:prefLabel "has similar mechanics"@en ;
+    skos:definition "A relation indicating that two games share similar gameplay mechanics."@en ;
+    rdfs:comment "Indicates that a game presents similar mechanics with another one."@en .
+
+ex:moreComplexThan a owl:ObjectProperty, owl:TransitiveProperty, owl:IrreflexiveProperty, owl:AsymmetricProperty ;
+    rdfs:subPropertyOf ex:relatedTo ;
+    rdfs:label "is more complex than"@en ;
+    skos:prefLabel "is more complex than"@en ;
+    skos:definition "A strict ordering relation indicating that one game is more complex than another."@en ;
+    rdfs:comment "Indicates that a game is more complex than another one."@en .
+
+ex:recommendedWith a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:subPropertyOf ex:relatedTo ;
+    rdfs:label "is recommended with"@en ;
+    skos:prefLabel "is recommended with"@en ;
+    skos:definition "A symmetric relation indicating that two games are often recommended together."@en ;
+    rdfs:comment "Indicates that a game is often recommended to players who like another one."@en .
+
+
+#################################################################
+# INSTANCES
+#################################################################
+
+# Classic card games
+ex:Belote      rdf:type ex:ClassicCardGame .
+ex:Poker       rdf:type ex:ClassicCardGame .
+ex:Tarot       rdf:type ex:ClassicCardGame .
+ex:Bataille    rdf:type ex:ClassicCardGame .
+ex:Pouilleux   rdf:type ex:ClassicCardGame .
+
+# Modern card games
+ex:Uno              rdf:type ex:ModernCardGame .
+ex:ExplodingKittens rdf:type ex:ModernCardGame .
+ex:Fantasy          rdf:type ex:ModernCardGame .
+
+# Collectible card games
+ex:Magic      rdf:type ex:CollectibleCardGame .
+ex:PokemonTCG rdf:type ex:CollectibleCardGame .
+ex:YuGiOh     rdf:type ex:CollectibleCardGame .
+
+# Deck-building games
+ex:Dominion rdf:type ex:DeckBuildingGame .
+ex:Regicide rdf:type ex:DeckBuildingGame .
+ex:SushiGo  rdf:type ex:DeckBuildingGame .
+
+# Collection game
+ex:SeaSaltAndPaper rdf:type ex:CollectionGame .
+
+# Pawn games
+ex:Echecs rdf:type ex:PawnGame .
+ex:Go     rdf:type ex:PawnGame .
+ex:Dames  rdf:type ex:PawnGame .
+
+# Management board games
+ex:Catan a ex:ManagementGame, ex:BoardGame ;
+    schema:image <https://example.org/images/catan.jpg> ;
+    schema:url <https://boardgamegeek.com/boardgame/13/catan> ;
+    dct:source <https://boardgamegeek.com/> ;
+    foaf:maker ex:KlausTeuber .
+
+ex:Monopoly rdf:type ex:ManagementGame , ex:BoardGame .
+ex:Risk     rdf:type ex:ManagementGame , ex:BoardGame .
+ex:Root     rdf:type ex:ManagementGame , ex:BoardGame .
+ex:Lueur    rdf:type ex:ManagementGame , ex:BoardGame .
+
+# Ambiance games
+ex:TimeUp rdf:type ex:CommunicationGame .
+ex:Dixit  rdf:type ex:CommunicationGame .
+
+ex:LoupGarou      rdf:type ex:BluffGame .
+ex:TraitresABord rdf:type ex:BluffGame .
+
+# Agility games
+ex:JungleSpeed rdf:type ex:ReflexesGame .
+ex:Gobbit      rdf:type ex:ReflexesGame .
+
+ex:Klutz rdf:type ex:PrecisionGame .
+ex:Jenga rdf:type ex:PrecisionGame .
+
+# Logic games
+ex:Rummikub rdf:type ex:LogicGame .
+ex:RushHour rdf:type ex:LogicGame .
+
+#################################################################
+# RELATIONS BETWEEN GAMES
+#################################################################
+
+ex:TraitresABord ex:inspiredBy       ex:LoupGarou .
+ex:YuGiOh        ex:inspiredBy       ex:Magic .
+ex:SushiGo       ex:similarMechanics ex:Fantasy .
+ex:JungleSpeed   ex:similarTo        ex:Gobbit .
+ex:Belote        ex:similarTo        ex:Tarot .
+ex:Risk          ex:moreComplexThan  ex:Monopoly .
+ex:Echecs        ex:moreComplexThan  ex:Dames .
+ex:TimeUp        ex:recommendedWith  ex:Klutz .

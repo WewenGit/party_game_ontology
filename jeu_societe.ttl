@@ -33,8 +33,7 @@ ex:PartyGamesScheme a skos:ConceptScheme ;
     dct:title "Party Games Concept Scheme"@en ;
     dct:creator "Owen BONSERGENT, Adrien DUOLLE" ;
     skos:prefLabel "Party Games Concept Scheme"@en ;
-    skos:definition "The concept scheme organizing categories of party games."@en .
-
+    skos:definition "The concept scheme organizing categories of party games."@en ;
     dct:description "Concept scheme for party game categories."@en .
 
 #################################################################
